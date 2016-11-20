@@ -2,3 +2,4 @@ node_modules
 .vscode
 app/npm-debug.log
 build
+electron-app-linux-x64

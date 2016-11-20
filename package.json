@@ -7,9 +7,11 @@
   "scripts": {
     "build": "webpack --progress --profile --display-error-details --display-cached",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
-    "electron": "electron app"
+    "electron": "electron app",
+    "pack": "electron-packager ./app --overwrite"
   },
   "devDependencies": {
+    "electron-packager": "^8.3.0",
     "electron-prebuilt": "^1.3.9",
     "es6-shim": "^0.35.1",
     "ts-loader": "^1.2.2",
