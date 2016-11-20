@@ -10,9 +10,9 @@ module.exports = {
         'angular2': [
             'rxjs',
             'reflect-metadata',
-            'angular2/core',
-            'angular2/router',
-            'angular2/http'
+            '@angular/core',
+            '@angular/router',
+            '@angular/http'
         ],
         'app': './app/app'
     },
@@ -33,8 +33,12 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: 'ts',
+                loaders: ['ts', 'angular2-template-loader'],
                 exclude: [ /node_modules/ ]
+            },
+            {
+                test: /\.(html|css)$/,
+                loader: 'raw-loader'
             }
         ]
     },
