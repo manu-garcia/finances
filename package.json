@@ -3,14 +3,16 @@
   "description": "description",
   "author": "author",
   "version": "1.0.0",
-  "main": "pathToMain",
   "scripts": {
     "build": "webpack --progress --profile --display-error-details --display-cached",
-    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "watch-webpack": "webpack --watch --progress --profile --display-error-details --display-cached",
+    "watch": "webpack-dev-server --progress --colors",
     "electron": "electron app",
-    "pack": "electron-packager ./app --overwrite"
+    "pack": "electron-packager ./app --overwrite",
+    "browse-dev": "chrome http://localhost:8080/webpack-dev-server/app"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
     "electron-packager": "^8.3.0",
     "electron-prebuilt": "^1.3.9",
     "es6-shim": "^0.35.1",
