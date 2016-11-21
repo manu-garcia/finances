@@ -39,6 +39,10 @@ module.exports = {
             {
                 test: /\.(html|css)$/,
                 loader: 'raw-loader'
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["raw-loader", "sass-loader?sourceMap"]
             }
         ]
     },
