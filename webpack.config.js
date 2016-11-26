@@ -8,6 +8,7 @@ module.exports = {
 
     entry: {
         'angular2': [
+            'font-awesome-sass-loader!./font-awesome-sass.config.js',
             'rxjs',
             'reflect-metadata',
             '@angular/core',
@@ -43,6 +44,14 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ["raw-loader", "sass-loader?sourceMap"]
+            },
+            { 
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "url-loader?limit=10000&mimetype=application/font-woff&name=../../resources/fonts/[name].[ext]"
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "file-loader" 
             }
         ]
     },

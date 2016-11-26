@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
+import 'font-awesome-sass-loader';
 import { AppComponent } from './component/app.component';
 
 @NgModule({

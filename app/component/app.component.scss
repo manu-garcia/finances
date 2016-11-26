@@ -1,5 +1,43 @@
+$mainColor : #4D394d;
+
 .app-component-container {
-    padding: 15px;
-    background-color: #2C9B60;
-    color: white;
+    height: 100%;
+    
+    .menu {
+        width: 20%;
+        height: inherit;
+        float: left;
+        background-color: $mainColor;
+        color: lighten($mainColor, 65);
+        padding: 0 20px;
+
+        .user-box {
+            h2 {
+                color: white;
+                text-align: left;
+            }
+        }
+
+        .accounts-box {
+
+            .account-box {
+
+            }
+        }
+
+        .action-box {
+
+            .action-box {
+
+            }
+        }
+
+    }
+
+    .content {
+        background-color: white;
+        width: 80%;
+        height: inherit;
+        float: right;
+    }
 }
