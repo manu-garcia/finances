@@ -12,9 +12,14 @@ $mainColor : #4D394d;
         padding: 0 20px;
 
         .user-box {
+
             h2 {
                 color: white;
                 text-align: left;
+
+                i {
+                    margin-left: 10px;
+                }
             }
         }
 
