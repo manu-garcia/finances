@@ -1,39 +1,103 @@
 $mainColor : #4D394d;
+$highlightedColor: #4C9689;
+
+$mainColorDark : darken($mainColor, 5);
+$mainColorWhite : lighten($mainColor, 50);
+
 
 .app-component-container {
     height: 100%;
     
     .menu {
-        width: 20%;
+        min-width: 10%;
         height: inherit;
         float: left;
         background-color: $mainColor;
-        color: lighten($mainColor, 65);
-        padding: 0 20px;
+        color: $mainColorWhite;
 
         .user-box {
+    
+            padding: 25px 25px;
+            cursor: pointer;
 
-            h2 {
+            span.user-name {
+                font-size: 150%;
                 color: white;
                 text-align: left;
+            }
 
-                i {
-                    margin-left: 10px;
+            span.user-icon {
+                color: $highlightedColor;
+                font-size: 75%;
+            }
+
+            span.icon {
+                margin-left: 10px;
+                padding: 0 2px;
+                color: $mainColorWhite;
+            }
+
+            &:hover {
+                background-color: $mainColorDark;
+            }
+        }
+
+        .menu-boxes {
+            margin-top: 10px;
+
+            .menu-title-box {
+
+                padding: 5px 25px 5px 25px;
+
+                .menu-title {
+                    color: $mainColorWhite;
+                    font-size: 125%;
+                    margin-bottom: 5px;
                 }
+
+                .menu-subtitle {
+                    color: darken($mainColorWhite, 15);
+                    font-size: 75%;
+                }
+
+                .menu-icons {
+                    float: right;
+                    padding: 5px 5px;
+                    cursor: pointer;
+
+                    span {
+                        color: darken($mainColorWhite, 15);
+
+                        &:hover {
+                            color: white;
+                        }
+                    }
+                }
+
+                &:hover {
+                    .menu-subtitle, .menu-title {
+                        color: white;
+                    }
+                }
+
             }
-        }
+            .menu-box {
+                padding: 5px 35px;
+                cursor: pointer;
 
-        .accounts-box {
+                &.selected {
+                    background-color: $highlightedColor;
+                    color: white;
+                }
 
-            .account-box {
+                &:hover {
+                    background-color: $mainColorDark;
 
-            }
-        }
-
-        .action-box {
-
-            .action-box {
-
+                    &.selected {
+                        background-color: $highlightedColor;
+                        color: white;
+                    }
+                }
             }
         }
 
