@@ -1,11 +1,11 @@
 @import '../theme.styles.scss';
 
 .account-container {
-    border-bottom: 1px solid lighten($greyText, 35);
     padding: 10px;
     margin: 5px;
 
     .account-header {
+        border-bottom: 1px solid $greyLine;
 
         .account-title {
             color: $greyText;
@@ -17,11 +17,13 @@
             }
 
             .account-info {
+                padding: 3px;
+
                 .account-detail {
                     font-size: 90%;
                 }
                 .account-detail-divider {
-                    padding: 0 2px;
+                    padding: 2px 2px;
                 }
             }
         }
@@ -44,4 +46,54 @@
             }
         }
     }
+
+    .menu-tabs {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+ 
+        .menu-tab {
+            display: inline-block;
+            flex: 1;
+            border-right: 1px solid $greyLine;
+            border-top: 3px solid #EEE;
+            text-align: center;
+            cursor: pointer;
+            color: $greyText;
+            background: #EEE;
+            padding: 10px 0;
+
+            i {
+                font-size: 125%;
+                padding: 5px;
+            }
+
+            &:hover {
+                color: black;
+                background-color: lighten($mainColorWhite, 20);
+            }
+        }
+
+        .selected {
+            color: $highlightedColor;
+            background-color: white;
+            font-weight: bold;
+            border: none;
+            border-top: 3px solid $highlightedColor;
+
+            div {
+                font-style: underline;
+            }
+
+            &:hover {
+                color: $highlightedColor;
+                background-color: white;
+            }
+        }
+
+        .last {
+            border-right: none;           
+        }
+    }
+
 }
