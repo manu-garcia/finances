@@ -14,8 +14,12 @@
                     <span class="fa fa-plus-square-o"></span>
                 </div>
             </div>
-            <div class="menu-box selected">Account 1</div>
-            <div class="menu-box">Account 2</div>
+            <div class="menu-box selected">
+                <a routerLink="/account" routerLinkActive="active">Account 1</a>
+            </div>
+            <div class="menu-box">
+                <a routerLink="/account" routerLinkActive="active">Account 2</a>
+            </div>
         </div>
         <div class="menu-boxes">
             <div class="menu-title-box">
@@ -28,5 +32,7 @@
         </div>
     </div>
 
-    <div class="content"></div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
 </div>

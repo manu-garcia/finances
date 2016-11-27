@@ -1,15 +1,12 @@
-$mainColor : #4D394d;
-$highlightedColor: #4C9689;
+@import '../theme.styles.scss';
 
-$mainColorDark : darken($mainColor, 5);
-$mainColorWhite : lighten($mainColor, 50);
-
+$menuColumnWidth: 225px;
 
 .app-component-container {
     height: 100%;
     
     .menu {
-        min-width: 10%;
+        width: $menuColumnWidth;
         height: inherit;
         float: left;
         background-color: $mainColor;
@@ -85,9 +82,16 @@ $mainColorWhite : lighten($mainColor, 50);
                 padding: 5px 35px;
                 cursor: pointer;
 
+                a {
+                    text-decoration: none;
+                    color: $mainColorWhite;
+                }
+
                 &.selected {
                     background-color: $highlightedColor;
-                    color: white;
+                    a {
+                        color: white;
+                    }
                 }
 
                 &:hover {
@@ -95,7 +99,9 @@ $mainColorWhite : lighten($mainColor, 50);
 
                     &.selected {
                         background-color: $highlightedColor;
-                        color: white;
+                        a {
+                            color: white;
+                        }
                     }
                 }
             }
@@ -105,8 +111,7 @@ $mainColorWhite : lighten($mainColor, 50);
 
     .content {
         background-color: white;
-        width: 80%;
+        margin-left: $menuColumnWidth;
         height: inherit;
-        float: right;
     }
 }
