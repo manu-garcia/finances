@@ -27,7 +27,7 @@ import { HomeComponent } from './component/home.component';
             { path: 'account', component: AccountComponent }
         ])
     ],
-    providers: [{ provide: APP_BASE_HREF, useValue:'/'}],
+    providers: [{ provide: APP_BASE_HREF, useValue:'/src/app'}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

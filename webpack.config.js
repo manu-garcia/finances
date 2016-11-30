@@ -19,8 +19,8 @@ module.exports = {
     },
 
     output: {
-        path: __dirname + '/dist/',
-        publicPath: 'dist/',
+        path: __dirname + '/src/app/dist/',
+        publicPath: 'src/app/dist/',
         filename: '[name].js',
         sourceMapFilename: '[name].js.map',
         chunkFilename: '[id].chunk.js'
@@ -47,7 +47,7 @@ module.exports = {
             },
             { 
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&mimetype=application/font-woff&name=../../../resources/fonts/[name].[ext]"
+                loader: "url-loader?limit=10000&mimetype=application/font-woff&name=../../../../../resources/fonts/[name].[ext]"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
