@@ -5,7 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'; 
+import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common'; 
 
 import 'font-awesome-sass-loader';
 
@@ -26,7 +27,7 @@ import { HomeComponent } from './component/home.component';
             { path: 'account', component: AccountComponent }
         ])
     ],
-    providers: [],
+    providers: [{ provide: APP_BASE_HREF, useValue:'/'}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
