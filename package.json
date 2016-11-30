@@ -7,8 +7,8 @@
     "build": "webpack --progress --profile --display-error-details --display-cached",
     "watch-webpack": "webpack --watch --progress --profile --display-error-details --display-cached",
     "watch": "webpack-dev-server --progress --colors",
-    "electron": "electron app",
-    "pack": "electron-packager ./app --overwrite",
+    "electron": "electron src/app",
+    "pack": "electron-packager src/app --overwrite",
     "browse-dev": "chrome http://localhost:8080/webpack-dev-server/app"
   },
   "devDependencies": {

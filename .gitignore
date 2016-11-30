@@ -4,3 +4,4 @@ app/npm-debug.log
 build
 electron-app-linux-x64
 resources
+dist

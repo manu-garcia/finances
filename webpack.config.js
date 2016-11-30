@@ -8,19 +8,19 @@ module.exports = {
 
     entry: {
         'angular2': [
-            'font-awesome-sass-loader!./font-awesome-sass.config.js',
+            'font-awesome-sass-loader!./src/font-awesome-sass.config.js',
             'rxjs',
             'reflect-metadata',
             '@angular/core',
             '@angular/router',
             '@angular/http'
         ],
-        'app': './app/app'
+        'app': './src/app/app'
     },
 
     output: {
-        path: __dirname + '/build/',
-        publicPath: 'build/',
+        path: __dirname + '/dist/',
+        publicPath: 'dist/',
         filename: '[name].js',
         sourceMapFilename: '[name].js.map',
         chunkFilename: '[id].chunk.js'
@@ -47,7 +47,7 @@ module.exports = {
             },
             { 
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&mimetype=application/font-woff&name=../../resources/fonts/[name].[ext]"
+                loader: "url-loader?limit=10000&mimetype=application/font-woff&name=../../../resources/fonts/[name].[ext]"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
