@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DBService } from '../service/db.service';
 
 @Component({
     selector: 'account-component',
     templateUrl: './account.component.html',
-    styleUrls: ['./account.component.scss']    
+    styleUrls: ['./account.component.scss']
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
 
-    constructor () {
+    constructor (private dbService: DBService) {
+
+    }
+
+    ngOnInit(): void {
+
+        let db = this.dbService.getDB();
 
     }
 }

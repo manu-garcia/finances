@@ -9,11 +9,12 @@
     "watch": "webpack-dev-server --progress --colors",
     "electron": "electron src/app",
     "pack": "electron-packager src/app --overwrite",
-    "browse-dev": "chrome http://localhost:8080/webpack-dev-server/app"
+    "browse-dev": "chrome http://localhost:8080/webpack-dev-server/src/app"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/lodash": "^4.14.39",
+    "@types/nedb": "0.0.31",
     "@types/node": "^6.0.48",
     "angular2-template-loader": "^0.6.0",
     "electron-packager": "^8.3.0",
@@ -44,6 +45,7 @@
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "lodash": "^4.17.2",
+    "nedb": "^1.8.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.0.0-rc.3",
     "zone.js": "^0.6.26"

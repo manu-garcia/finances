@@ -10,6 +10,8 @@ import { APP_BASE_HREF } from '@angular/common';
 
 import 'font-awesome-sass-loader';
 
+import { DBService } from './service/db.service';
+
 import { AppComponent } from './component/app.component';
 import { AccountComponent } from './component/account.component';
 import { HomeComponent } from './component/home.component';
@@ -27,7 +29,10 @@ import { HomeComponent } from './component/home.component';
             { path: 'account', component: AccountComponent }
         ])
     ],
-    providers: [{ provide: APP_BASE_HREF, useValue:'/src/app'}],
+    providers: [
+        DBService,
+        { provide: APP_BASE_HREF, useValue:'/src/app'}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
