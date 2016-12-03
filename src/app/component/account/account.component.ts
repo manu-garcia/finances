@@ -3,8 +3,8 @@ import { DBService } from '../../service/db.service';
 
 @Component({
     selector: 'account-component',
-    templateUrl: './account.component.html',
-    styleUrls: ['./account.component.scss']
+    templateUrl: './account.template.html',
+    styleUrls: ['./account.styles.scss']
 })
 export class AccountComponent implements OnInit {
 

@@ -3,8 +3,8 @@ import { DBService } from '../../service/db.service';
 
 @Component ({
     selector: 'app-component',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    templateUrl: './app.template.html',
+    styleUrls: ['./app.styles.scss'],
     providers: [ DBService ]
 })
 export class AppComponent implements OnInit {
