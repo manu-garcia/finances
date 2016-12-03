@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DBService } from '../service/db.service';
+import { DBService } from '../../service/db.service';
 
 @Component ({
     selector: 'app-component',

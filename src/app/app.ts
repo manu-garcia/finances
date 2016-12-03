@@ -12,9 +12,9 @@ import 'font-awesome-sass-loader';
 
 import { DBService } from './service/db.service';
 
-import { AppComponent } from './component/app.component';
-import { AccountComponent } from './component/account.component';
-import { HomeComponent } from './component/home.component';
+import { AppComponent } from './component/app/app.component';
+import { AccountComponent } from './component/account/account.component';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
     declarations: [
