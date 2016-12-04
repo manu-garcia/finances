@@ -4,3 +4,4 @@ app/npm-debug.log
 build
 electron-packages
 src/app/dist
+npm-debug.log

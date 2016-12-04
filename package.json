@@ -9,7 +9,8 @@
     "watch": "webpack-dev-server --progress --colors",
     "electron": "electron src/app",
     "pack": "electron-packager src/app finances --overwrite --out=electron-packages",
-    "browse-dev": "chrome http://localhost:8080/webpack-dev-server/src/app"
+    "browse-dev": "chrome http://localhost:8080/webpack-dev-server/src/app",
+    "clean": "rm ./electron-packages/ -rf && rm ./src/app/dist/*"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",
