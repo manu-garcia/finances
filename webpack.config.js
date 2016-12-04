@@ -7,7 +7,7 @@ module.exports = {
     debug: true,
 
     entry: {
-        'angular2': [
+        'vendor.bundle': [
             'font-awesome-sass-loader!./src/font-awesome-sass.config.js',
             'rxjs',
             'reflect-metadata',
@@ -57,7 +57,7 @@ module.exports = {
     },
 
     plugins: [
-        new CommonsChunkPlugin({ name: 'angular2', filename: 'angular2.js', minChunks: Infinity,}),
+        new CommonsChunkPlugin({ name: 'vendor.bundle', filename: 'vendor.bundle.js', minChunks: Infinity,}),
         new CommonsChunkPlugin({ name: 'common', filename: 'common.js'})
     ]
 };

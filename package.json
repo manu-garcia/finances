@@ -1,14 +1,14 @@
 {
-  "name": "electron",
-  "description": "description",
-  "author": "author",
-  "version": "1.0.0",
+  "name": "finances",
+  "description": "Personal finances application.",
+  "author": "Manu Garcia",
+  "version": "0.0.1",
   "scripts": {
     "build": "webpack --progress --profile --display-error-details --display-cached",
     "watch-webpack": "webpack --watch --progress --profile --display-error-details --display-cached",
     "watch": "webpack-dev-server --progress --colors",
     "electron": "electron src/app",
-    "pack": "electron-packager src/app --overwrite",
+    "pack": "electron-packager src/app finances --overwrite --out=electron-packages",
     "browse-dev": "chrome http://localhost:8080/webpack-dev-server/src/app"
   },
   "devDependencies": {
