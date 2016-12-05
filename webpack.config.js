@@ -13,7 +13,8 @@ module.exports = {
             'reflect-metadata',
             '@angular/core',
             '@angular/router',
-            '@angular/http'
+            '@angular/http',
+            '@angular/forms'
         ],
         'app': './src/app/app'
     },

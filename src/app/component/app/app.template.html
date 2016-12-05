@@ -9,16 +9,13 @@
         <div class="menu-boxes">
             <div class="menu-title-box">
                 <span class="menu-title">Accounts</span>
-                <span class="menu-subtitle">(2)</span>
+                <span class="menu-subtitle">({{getNAccounts()}})</span>
                 <div class="menu-icons">
-                    <span routerLink="/create-account" routerLinkActive="active" class="fa fa-plus-square-o"></span>
+                    <span routerLink="/account-form" routerLinkActive="active" class="fa fa-plus-square-o"></span>
                 </div>
             </div>
-            <div class="menu-box selected">
-                <a routerLink="/account" routerLinkActive="active">Account 1</a>
-            </div>
-            <div class="menu-box">
-                <a routerLink="/account" routerLinkActive="active">Account 2</a>
+            <div class="menu-box" *ngFor="let account of accounts">
+                <a routerLink="/account" routerLinkActive="active">{{account.name}}</a>
             </div>
         </div>
     </div>
