@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 module.exports = {
     devtool: 'source-map',
@@ -14,7 +15,9 @@ module.exports = {
             '@angular/core',
             '@angular/router',
             '@angular/http',
-            '@angular/forms'
+            '@angular/forms',
+            'jquery',
+            'bootstrap-loader'
         ],
         'app': './src/app/app'
     },
@@ -53,12 +56,23 @@ module.exports = {
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: "file-loader?name=[name].[ext]" 
+            },
+            {
+                test: /bootstrap\/dist\/js\/umd\//, 
+                loader: 'imports?jQuery=jquery'
             }
         ]
     },
 
     plugins: [
         new CommonsChunkPlugin({ name: 'vendor.bundle', filename: 'vendor.bundle.js', minChunks: Infinity,}),
-        new CommonsChunkPlugin({ name: 'common', filename: 'common.js'})
+        new CommonsChunkPlugin({ name: 'common', filename: 'common.js'}),
+        new ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery',
+            "Tether": 'tether',
+            "window.Tether": "tether"
+        })
     ]
 };
