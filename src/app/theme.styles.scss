@@ -1,8 +1,9 @@
-$mainColor : #4D394d;
-$highlightedColor: #4C9689;
+$mainColor : #463030;
+$highlightedColor: #3D9970;
 
 $mainColorDark : darken($mainColor, 5);
-$mainColorWhite : lighten($mainColor, 50);
+$mainColorWhite : lighten($mainColor, 75);
+$bgHover : lighten($mainColor, 73);
 
-$greyText: #717274;
+$greyText: $mainColor;
 $greyLine: lighten($greyText, 35);

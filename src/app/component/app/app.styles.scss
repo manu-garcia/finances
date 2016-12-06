@@ -59,11 +59,11 @@ $menuColumnWidth: 225px;
 
                 .menu-icons {
                     float: right;
-                    padding: 5px 5px;
                     cursor: pointer;
 
                     span {
                         color: darken($mainColorWhite, 15);
+                        padding: 5px 5px;
 
                         &:hover {
                             color: white;
