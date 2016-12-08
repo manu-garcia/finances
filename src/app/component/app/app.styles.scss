@@ -49,7 +49,6 @@ $menuColumnWidth: 225px;
                 .menu-title {
                     color: $mainColorWhite;
                     font-size: 125%;
-                    margin-bottom: 5px;
                 }
 
                 .menu-subtitle {
@@ -59,11 +58,11 @@ $menuColumnWidth: 225px;
 
                 .menu-icons {
                     float: right;
-                    cursor: pointer;
 
                     span {
+                        cursor: pointer;
                         color: darken($mainColorWhite, 15);
-                        padding: 5px 5px;
+                        padding: 9px 5px;
 
                         &:hover {
                             color: white;

@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="menu-box" *ngFor="let account of accounts">
-                <a routerLink="/account" routerLinkActive="active">{{account.name}}</a>
+                <a [routerLink]="['account', account._id]" routerLinkActive="active">{{account.name}}</a>
             </div>
         </div>
     </div>

@@ -2,9 +2,9 @@
 export class Account {
     
     constructor (
-        public id: number,
         public name: string,
-        public currency: string
+        public currency: string,
+        public _id?: string        
     ) {
 
     }

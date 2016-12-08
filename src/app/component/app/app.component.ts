@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { DBService } from '../../service/db.service';
 
+import { DBService } from '../../service/db.service';
 import { Account } from '../../model/account';
 
 @Component ({
@@ -13,7 +13,11 @@ export class AppComponent implements OnInit {
 
     accounts : Account[];
 
-    constructor (private dbService: DBService, private zone: NgZone) {
+    constructor (
+        private dbService: DBService,
+        private zone: NgZone
+    ) {
+
     }
 
     ngOnInit(): void {
@@ -23,23 +27,18 @@ export class AppComponent implements OnInit {
 
         db.find({}, function(err, data) {
 
-            self.setAccounts(data);
+            self.zone.run(() => {
+                self.accounts = data;
+            });
 
         });
 
     }
 
-    setAccounts(data): void {
-
-        this.zone.run(() => {
-            this.accounts = data;
-        });
-
-    }
 
     getNAccounts(): number {
         return this.accounts && this.accounts.length ? this.accounts.length : 0;
     }
-    
+
 
 }

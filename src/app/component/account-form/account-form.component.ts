@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { DBService } from '../../service/db.service';
 
@@ -12,11 +14,15 @@ import { Account } from '../../model/account';
 export class AccountFormComponent implements OnInit {
 
     currencies = ['GBP', 'EUR'];
-    model = new Account(null, '', '');
+    model = new Account('', '');
     submitted = false;
     form = undefined;
 
-    constructor (private dbService: DBService) {
+    constructor (
+        private dbService: DBService,
+        private location: Location,
+        private router: Router
+    ) {
 
     }
 
@@ -25,14 +31,18 @@ export class AccountFormComponent implements OnInit {
     }
 
     onSubmit(form) {
-        console.log('Form submitted', this);
 
-        if (!this.model.id) {
+        let self = this;
+
+        if (!this.model._id) {
 
             // Create new account
+            delete this.model._id;
             this.dbService.getDB().insert(this.model, function(err, newAccount) {
-                console.log('New account created ', newAccount);
                 form.reset();
+                self.router.navigate(['account', newAccount._id]);
+
+                // Refresh app component account list
             })
 
         } else {
@@ -46,6 +56,7 @@ export class AccountFormComponent implements OnInit {
 
     onCancel(form) {
         form.reset();
+        this.location.back();
     }
 
 } 

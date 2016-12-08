@@ -19,8 +19,9 @@ import { AccountFormComponent } from './component/account-form/account-form.comp
 
 const routes: Routes = [
     { path: 'app', component: HomeComponent },
-    { path: 'account', component: AccountComponent },
+    { path: 'account/:id', component: AccountComponent },
     { path: 'account-form', component: AccountFormComponent },
+    { path: 'home', component: HomeComponent },
     { path: '', component: HomeComponent },
     { path: '**', component: HomeComponent }
 ];
