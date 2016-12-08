@@ -38,11 +38,9 @@ export class AccountFormComponent implements OnInit {
 
             // Create new account
             delete this.model._id;
-            this.dbService.getDB().insert(this.model, function(err, newAccount) {
+            this.dbService.createAccount(this.model, function(err, newAccount) {
                 form.reset();
                 self.router.navigate(['account', newAccount._id]);
-
-                // Refresh app component account list
             })
 
         } else {
