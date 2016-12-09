@@ -12,7 +12,7 @@
         <div class="form-group">
             <label for="currency">Currency</label>
             <select class="form-control" id="currency" required [(ngModel)]="model.currency" name="currency" #currency="ngModel">
-                <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+                <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.name}} ({{currency.symbol}})</option>
             </select>
             <div [hidden]="currency.valid || currency.pristine" class="alert alert-danger">
                 Currency is required

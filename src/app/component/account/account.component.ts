@@ -11,7 +11,7 @@ import { Account } from '../../model/account';
 })
 export class AccountComponent implements OnInit, OnDestroy {
 
-    account: {};
+    account: Account;
     id: string;
     private sub: any;
 
@@ -21,7 +21,6 @@ export class AccountComponent implements OnInit, OnDestroy {
         private router: Router,
         private zone: NgZone
     ) {
-        this.account = { name: '' }; 
     }
 
     ngOnInit(): void {
@@ -35,7 +34,7 @@ export class AccountComponent implements OnInit, OnDestroy {
             let db = this.dbService.getDB();
             db.findOne({_id: this.id}, function (err, data) {
                 self.zone.run( () => {
-                    self.account = data;
+                    self.account = data as Account;
                 });
             });
 

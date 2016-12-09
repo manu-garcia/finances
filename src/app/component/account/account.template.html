@@ -1,9 +1,9 @@
-<div class="account-container">
+<div *ngIf="account" class="account-container">
     <div class="account-header">
         <div class="account-title">
             <span class="account-name">{{account.name}}</span>
             <div class="account-info">
-                <span class="account-detail">Account in £</span>
+                <span class="account-detail">Account in {{account.currency.symbol}}</span>
                 <span class="account-detail-divider">|</span>
                 <span class="account-detail"># Transactions 0</span>
                 <span class="account-detail-divider">|</span>

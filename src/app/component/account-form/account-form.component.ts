@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DBService } from '../../service/db.service';
 
 import { Account } from '../../model/account';
+import * as Currency from '../../model/currency';
 
 @Component({
     selector: 'account-form-component',
@@ -13,8 +14,8 @@ import { Account } from '../../model/account';
 })
 export class AccountFormComponent implements OnInit {
 
-    currencies = ['GBP', 'EUR'];
-    model = new Account('', '');
+    currencies = Currency.Currencies;
+    model = new Account(undefined, undefined);
     submitted = false;
     form = undefined;
 
