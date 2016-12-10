@@ -7,7 +7,7 @@ import { Account } from '../../model/account';
 @Component({
     selector: 'account-component',
     templateUrl: './account.template.html',
-    styleUrls: ['./account.styles.scss']
+    styleUrls: ['./account.styles.scss'],
 })
 export class AccountComponent implements OnInit, OnDestroy {
 
@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit, OnDestroy {
             this.id = params['id'];
 
             let db = this.dbService.getDB();
-            db.findOne({_id: this.id}, function (err, data) {
+            db.findOne({_id: this.id}, (err, data) => {
                 self.zone.run( () => {
                     self.account = data as Account;
                 });

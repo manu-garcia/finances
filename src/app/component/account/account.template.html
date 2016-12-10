@@ -1,5 +1,5 @@
-<div *ngIf="account" class="account-container">
-    <div class="account-header">
+<div class="account-container">
+    <div *ngIf="account" class="account-header">
         <div class="account-title">
             <span class="account-name">{{account.name}}</span>
             <div class="account-info">
@@ -17,17 +17,21 @@
     </div>
 
     <div class="menu-tabs">
-        <div class="menu-tab selected">
+        <div class="menu-tab selected" routerLink="./" routerLinkActive="active">
             <i class="fa fa-eye"></i>
             <div>Overview</div>
         </div>
-        <div class="menu-tab">
+        <div class="menu-tab" routerLink="charts" routerLinkActive="active">
             <i class="fa fa-bar-chart"></i>
             <div>Charts</div>
         </div>
-        <div class="menu-tab">
+        <div class="menu-tab" routerLink="transactions" routerLinkActive="active">
             <i class="fa fa-money"></i>
             <div>Transactions</div>
         </div>
+    </div>
+
+    <div class="account-tab-content">
+        <router-outlet></router-outlet>
     </div>
 </div>
