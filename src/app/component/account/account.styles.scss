@@ -37,10 +37,12 @@
             span {
                 padding: 5px;
                 cursor: pointer;
+                border: 1px solid white;
 
-                &:hover {
+                &:hover, &.active {
                     color: black;
                     background-color: $bgHover;
+                    border: 1px solid darken($bgHover, 10);
                 }
             }
         }

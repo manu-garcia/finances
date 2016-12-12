@@ -14,8 +14,8 @@
                     <span routerLink="/account-form" routerLinkActive="active" class="fa fa-plus-square-o"></span>
                 </div>
             </div>
-            <div class="menu-box" *ngFor="let account of accounts">
-                <a [routerLink]="['account', account._id]" routerLinkActive="active">{{account.name}}</a>
+            <div class="menu-box" *ngFor="let account of accounts" [routerLink]="['account', account._id]" routerLinkActive="active">
+                <a>{{account.name}}</a>
             </div>
         </div>
     </div>

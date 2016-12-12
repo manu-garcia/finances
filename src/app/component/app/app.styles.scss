@@ -86,21 +86,15 @@ $menuColumnWidth: 225px;
                     color: $mainColorWhite;
                 }
 
-                &.selected {
+                &.active {
                     background-color: $highlightedColor;
-                    a {
-                        color: white;
-                    }
                 }
 
                 &:hover {
                     background-color: $mainColorDark;
 
-                    &.selected {
+                    &.active {
                         background-color: $highlightedColor;
-                        a {
-                            color: white;
-                        }
                     }
                 }
             }

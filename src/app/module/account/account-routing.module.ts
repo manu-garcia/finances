@@ -10,7 +10,8 @@ import { AccountFormComponent } from '../../component/account-form/account-form.
 const routes:Routes = [
     { path: 'account/:id', component: AccountComponent,
         children: [
-            { path: '', component: AccountOverviewComponent },
+            { path: '', redirectTo: 'overview' },
+            { path: 'overview', component: AccountOverviewComponent },
             { path: 'charts', component: AccountChartsComponent },
             { path: 'transactions', component: AccountTransactionsComponent },
             { path: 'account-form/:id?', component: AccountFormComponent },
