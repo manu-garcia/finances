@@ -1,4 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+
+import { Account } from '../../model/account';
+import { AccountService } from '../../service/account.service';
 
 @Component ({
     selector: 'account-overview',
@@ -7,17 +10,30 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AccountOverviewComponent implements OnInit, OnDestroy {
 
-    constuctor (
-        
+    account: Account;
+    private accountSubscription: any;
+
+    constructor (
+        private accountService: AccountService,
+        private zone: NgZone,
     ) {
 
     }
 
     ngOnInit () {
 
+        this.accountSubscription = this.accountService.account$.subscribe(
+            account => {
+                console.log('Account-Overview Component, new account', account);
+                this.zone.run( () => {
+                    this.account = account;
+                });
+            }
+        );
+
     }
 
     ngOnDestroy () {
-        
+        this.accountSubscription.unsubscribe();
     }
 };

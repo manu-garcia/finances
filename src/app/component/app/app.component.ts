@@ -2,13 +2,14 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { DBService } from '../../service/db.service';
+import { AccountService } from '../../service/account.service';
+
 import { Account } from '../../model/account';
 
 @Component ({
     selector: 'app-component',
     templateUrl: './app.template.html',
     styleUrls: ['./app.styles.scss'],
-    providers: [ DBService ]
 })
 export class AppComponent implements OnInit {
 
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
 
     constructor (
         private dbService: DBService,
+        private accountService: AccountService,
         private zone: NgZone
     ) {
 
@@ -24,10 +26,11 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
 
-        let db = this.dbService.loadDB();
         let self = this;
+        this.dbService.loadDB();
+        this.accountService.populateAccounts();
 
-        this.subscription = this.dbService.accounts$.subscribe(accounts => {
+        this.subscription = this.accountService.accounts$.subscribe(accounts => {
             self.zone.run(() => {
                 self.accounts = accounts;
             });

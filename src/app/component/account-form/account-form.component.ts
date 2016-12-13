@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { DBService } from '../../service/db.service';
+import { AccountService } from '../../service/account.service';
 
 import { Account } from '../../model/account';
 import * as Currency from '../../model/currency';
@@ -20,7 +20,7 @@ export class AccountFormComponent implements OnInit {
     form = undefined;
 
     constructor (
-        private dbService: DBService,
+        private accountService: AccountService,
         private location: Location,
         private router: Router
     ) {
@@ -39,7 +39,7 @@ export class AccountFormComponent implements OnInit {
 
             // Create new account
             delete this.model._id;
-            this.dbService.createAccount(this.model, function(err, newAccount) {
+            this.accountService.createAccount(this.model, function (err, newAccount) {
                 form.reset();
                 self.router.navigate(['account', newAccount._id]);
             })

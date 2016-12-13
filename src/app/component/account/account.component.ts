@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Router, ActivatedRoute, Params, Routes } from '@angular/router';
 
-import { DBService } from '../../service/db.service';
+import { AccountService } from '../../service/account.service';
+
 import { Account } from '../../model/account';
 
 @Component({
@@ -13,10 +14,11 @@ export class AccountComponent implements OnInit, OnDestroy {
 
     account: Account;
     id: string;
-    private sub: any;
+    private urlSubscription: any;
+    private accountSubscription: any;
 
     constructor (
-        private dbService: DBService,
+        private accountService: AccountService, 
         private route: ActivatedRoute,
         private router: Router,
         private zone: NgZone
@@ -27,23 +29,31 @@ export class AccountComponent implements OnInit, OnDestroy {
 
         let self = this;
 
-        this.sub = this.route.params.subscribe(params => {
+        this.accountSubscription = this.accountService.account$.subscribe(
+            account => {
+                console.log('Account Component, new account', account);
+
+                this.zone.run( () => {
+                    this.account = account;
+                });
+            }
+        )
+
+        this.urlSubscription = this.route.params.subscribe(params => {
 
             this.id = params['id'];
 
-            let db = this.dbService.getDB();
-            db.findOne({_id: this.id}, (err, data) => {
-                self.zone.run( () => {
-                    self.account = data as Account;
-                });
-            });
+            console.log('Account Component, new url', this.id);
+
+            this.accountService.populateAccount(this.id);
 
         });
 
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        this.urlSubscription.unsubscribe();
+        this.accountSubscription.unsubscribe();
     }
 
 }
