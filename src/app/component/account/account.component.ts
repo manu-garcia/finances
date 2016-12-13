@@ -29,7 +29,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
         let self = this;
 
-        this.accountSubscription = this.accountService.account$.subscribe(
+        this.accountSubscription = this.accountService.account.subscribe(
             account => {
                 console.log('Account Component, new account', account);
 
@@ -37,17 +37,19 @@ export class AccountComponent implements OnInit, OnDestroy {
                     this.account = account;
                 });
             }
-        )
+        );
 
-        this.urlSubscription = this.route.params.subscribe(params => {
+        this.urlSubscription = this.route.params.subscribe(
+            params => {
+                
+                this.id = params['id'];
 
-            this.id = params['id'];
+                console.log('Account Component, new url', this.id);
 
-            console.log('Account Component, new url', this.id);
+                this.accountService.populateAccount(this.id);
 
-            this.accountService.populateAccount(this.id);
-
-        });
+            }
+        );
 
     }
 

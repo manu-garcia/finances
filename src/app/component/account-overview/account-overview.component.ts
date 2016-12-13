@@ -22,7 +22,9 @@ export class AccountOverviewComponent implements OnInit, OnDestroy {
 
     ngOnInit () {
 
-        this.accountSubscription = this.accountService.account$.subscribe(
+        console.log('account-overview ngOnInit()');
+
+        this.accountSubscription = this.accountService.account.subscribe(
             account => {
                 console.log('Account-Overview Component, new account', account);
                 this.zone.run( () => {

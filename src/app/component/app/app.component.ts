@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
         this.dbService.loadDB();
         this.accountService.populateAccounts();
 
-        this.subscription = this.accountService.accounts$.subscribe(accounts => {
+        this.subscription = this.accountService.accounts.subscribe(accounts => {
             self.zone.run(() => {
                 self.accounts = accounts;
             });

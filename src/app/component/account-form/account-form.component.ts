@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AccountService } from '../../service/account.service';
 
@@ -12,34 +12,57 @@ import * as Currency from '../../model/currency';
     templateUrl: './account-form.template.html',
     styleUrls: ['./account-form.styles.scss']
 })
-export class AccountFormComponent implements OnInit {
+export class AccountFormComponent implements OnInit, OnDestroy {
 
+    accountSubscription: any;
     currencies = Currency.Currencies;
-    model = new Account(undefined, undefined);
+    account = new Account(undefined, undefined);
     submitted = false;
     form = undefined;
 
     constructor (
         private accountService: AccountService,
         private location: Location,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute,
+        private zone: NgZone,
     ) {
 
     }
 
     ngOnInit(): void {
 
+        console.log('account-form ngOnInit()', this.route);
+
+        if (this.route.snapshot.params['id?'] != undefined) {
+
+            this.accountSubscription = this.accountService.account.subscribe( account => {
+                this.zone.run(() => {
+                    console.log("account-form account next", account);
+
+                    this.account = account;
+                });
+            });
+
+        }
+    }
+
+    ngOnDestroy(): void {
+        if (this.accountSubscription) {
+            this.accountSubscription.unsubscribe();
+        }
     }
 
     onSubmit(form) {
 
         let self = this;
 
-        if (!this.model._id) {
+        console.log('account-form: onSubmit()', this.account);
+        if (!this.account._id) {
 
             // Create new account
-            delete this.model._id;
-            this.accountService.createAccount(this.model, function (err, newAccount) {
+            delete this.account._id;
+            this.accountService.createAccount(this.account, function (err, newAccount) {
                 form.reset();
                 self.router.navigate(['account', newAccount._id]);
             })
@@ -54,8 +77,13 @@ export class AccountFormComponent implements OnInit {
     }
 
     onCancel(form) {
-        form.reset();
+        // form.reset();
         this.location.back();
+    }
+
+    trackCurrencyBy(currency) {
+        console.log('trackCurrencyBy', currency);
+        return currency.id;
     }
 
 } 
