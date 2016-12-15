@@ -16,9 +16,11 @@ export class AccountFormComponent implements OnInit, OnDestroy {
 
     accountSubscription: any;
     currencies = Currency.Currencies;
-    account = new Account(undefined, undefined);
     submitted = false;
     form = undefined;
+
+    currency: Currency.Currency = undefined;
+    name: string = '';
 
     constructor (
         private accountService: AccountService,
@@ -40,11 +42,16 @@ export class AccountFormComponent implements OnInit, OnDestroy {
                 this.zone.run(() => {
                     console.log("account-form account next", account);
 
-                    this.account = account;
+                    this.name = account.name;
+
+                    // ngFor object identity based on === operator. Problems having tackBy to work
+                    // this.currency = account.currency;
+                    this.currency = Currency.Currencies[account.currency.id];
                 });
             });
 
         }
+
     }
 
     ngOnDestroy(): void {
@@ -57,21 +64,21 @@ export class AccountFormComponent implements OnInit, OnDestroy {
 
         let self = this;
 
-        console.log('account-form: onSubmit()', this.account);
-        if (!this.account._id) {
+        console.log('account-form: onSubmit()', this.name, this.currency);
+        // if (!this.account._id) {
 
             // Create new account
-            delete this.account._id;
-            this.accountService.createAccount(this.account, function (err, newAccount) {
+            // delete this.account._id;
+            this.accountService.createAccount({name: this.name, currency: this.currency}, function (err, newAccount) {
                 form.reset();
                 self.router.navigate(['account', newAccount._id]);
             })
 
-        } else {
+        // } else {
 
             // Edit current account
 
-        }
+        // }
 
         this.submitted = true;
     }
@@ -81,9 +88,8 @@ export class AccountFormComponent implements OnInit, OnDestroy {
         this.location.back();
     }
 
-    trackCurrencyBy(currency) {
-        console.log('trackCurrencyBy', currency);
-        return currency.id;
+    trackCurrency(index, currency) {
+        return currency ? currency.id : undefined;
     }
 
-} 
+}

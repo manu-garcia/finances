@@ -1,20 +1,21 @@
 <div class="account-form-container">
     <h1>Account</h1>
     <form #accountForm="ngForm" (ngSubmit)="onSubmit(accountForm)">
+
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required [(ngModel)]="account.name" name="name" #name="ngModel">
-            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name" #nameInput="ngModel">
+            <div [hidden]="nameInput.valid || nameInput.pristine" class="alert alert-danger">
                 Name is required
             </div>
         </div>
 
         <div class="form-group">
             <label for="currency">Currency</label>
-            <select class="form-control" id="currency" required [(ngModel)]="account.currency" name="currency" #currency="ngModel">
-                <option *ngFor="let currency of currencies; trackBy: trackCurrencyBy" [ngValue]="currency" selected="{{ currency.id === account.currency.id ? true : null }}">{{currency.name}} ({{currency.symbol}})</option>
+            <select class="form-control" required [(ngModel)]="currency" name="currency" #currencyInput="ngModel">
+                <option *ngFor="let c of currencies" [ngValue]="c">{{c.name}} ({{c.symbol}})</option>
             </select>
-            <div [hidden]="currency.valid || currency.pristine" class="alert alert-danger">
+            <div [hidden]="currencyInput.valid || currencyInput.pristine" class="alert alert-danger">
                 Currency is required
             </div>
         </div>
