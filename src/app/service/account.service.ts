@@ -61,4 +61,17 @@ export class AccountService {
 
     }
 
+    updateAccount (id, fieldsObject, fn) {
+        let self = this;
+
+        this.dbService.db.update({ _id: id}, { $set: fieldsObject }, {}, (err, numReplaced) => {
+
+            console.log('Account updated!');
+
+            self.populateAccount(id);
+
+            if (typeof fn == 'function') fn(err, numReplaced);
+        });
+    }
+
 }

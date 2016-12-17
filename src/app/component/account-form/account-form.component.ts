@@ -21,6 +21,7 @@ export class AccountFormComponent implements OnInit, OnDestroy {
 
     currency: Currency.Currency = undefined;
     name: string = '';
+    id: string = undefined;
 
     constructor (
         private accountService: AccountService,
@@ -42,9 +43,10 @@ export class AccountFormComponent implements OnInit, OnDestroy {
                 this.zone.run(() => {
                     console.log("account-form account next", account);
 
+                    this.id = account._id;
                     this.name = account.name;
 
-                    // ngFor object identity based on === operator. Problems having tackBy to work
+                    // ngFor object identity based on === operator. Problems having trackBy to work
                     // this.currency = account.currency;
                     this.currency = Currency.Currencies[account.currency.id];
                 });
@@ -65,26 +67,29 @@ export class AccountFormComponent implements OnInit, OnDestroy {
         let self = this;
 
         console.log('account-form: onSubmit()', this.name, this.currency);
-        // if (!this.account._id) {
+        if (!this.id) {
 
             // Create new account
-            // delete this.account._id;
             this.accountService.createAccount({name: this.name, currency: this.currency}, function (err, newAccount) {
                 form.reset();
                 self.router.navigate(['account', newAccount._id]);
             })
 
-        // } else {
+        } else {
 
             // Edit current account
-
-        // }
+            console.log('Editing account on submit', this.id);
+            this.accountService.updateAccount(this.id, { name: this.name, currency: this.currency }, (err, numReplaced) => {
+                form.reset();
+                self.router.navigate(['account', this.id]);
+            });
+        }
 
         this.submitted = true;
     }
 
     onCancel(form) {
-        // form.reset();
+        form.reset();
         this.location.back();
     }
 
