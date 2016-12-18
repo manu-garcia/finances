@@ -2,21 +2,23 @@ import { Injectable } from '@angular/core';
 
 import * as Datastore  from 'nedb';
 
+import logger from '../logger';
+
 @Injectable()
 export class DBService {
 
     db: Datastore;
     
     constructor() {
-        console.log('DBService constructor');
+        logger.debug('DBService constructor');
     }
 
     loadDB() {
 
         if (!this.db) {
-            console.log('DBService loadDB');
+            logger.debug('DBService loadDB');
             
-            this.db = new Datastore({ filename: './db.json', autoload: true });
+            this.db = new Datastore({ filename: './db/db.json', autoload: true });
         }
 
         return this.db;

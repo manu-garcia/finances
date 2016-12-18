@@ -6,6 +6,8 @@ import { AccountService } from '../../service/account.service';
 
 import { Account } from '../../model/account';
 
+import logger from '../../logger';
+
 @Component ({
     selector: 'app-component',
     templateUrl: './app.template.html',

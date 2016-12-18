@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Account } from '../../model/account';
 import { AccountService } from '../../service/account.service';
 
+import logger from '../../logger';
+
 @Component ({
     selector: 'account-overview',
     templateUrl: './account-overview.template.html',
@@ -22,11 +24,11 @@ export class AccountOverviewComponent implements OnInit, OnDestroy {
 
     ngOnInit () {
 
-        console.log('account-overview ngOnInit()');
+        logger.debug('account-overview ngOnInit()');
 
         this.accountSubscription = this.accountService.account.subscribe(
             account => {
-                console.log('Account-Overview Component, new account', account);
+                logger.debug('Account-Overview Component, new account', account);
                 this.zone.run( () => {
                     this.account = account;
                 });

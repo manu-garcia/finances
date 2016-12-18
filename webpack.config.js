@@ -6,6 +6,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 module.exports = {
     devtool: 'source-map',
     debug: true,
+    target: 'electron-renderer',
 
     entry: {
         'vendor.bundle': [
@@ -35,6 +36,10 @@ module.exports = {
     },
 
     module: {
+        // Json loader needed to import winston
+        preLoaders: [
+            { test: /\.json$/, loader: 'json'},
+        ],
         loaders: [
             {
                 test: /\.ts$/,

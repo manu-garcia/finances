@@ -5,6 +5,8 @@ import { AccountService } from '../../service/account.service';
 
 import { Account } from '../../model/account';
 
+import logger from '../../logger';
+
 @Component({
     selector: 'account-component',
     templateUrl: './account.template.html',
@@ -31,7 +33,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
         this.accountSubscription = this.accountService.account.subscribe(
             account => {
-                console.log('Account Component, new account', account);
+                logger.debug('Account Component, new account', account);
 
                 this.zone.run( () => {
                     this.account = account;
@@ -44,7 +46,7 @@ export class AccountComponent implements OnInit, OnDestroy {
                 
                 this.id = params['id'];
 
-                console.log('Account Component, new url', this.id);
+                logger.debug('Account Component, new url', this.id);
 
                 this.accountService.populateAccount(this.id);
 

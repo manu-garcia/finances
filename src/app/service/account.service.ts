@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { DBService } from './db.service';
 import { Account } from '../model/account';
 
+import logger from '../logger';
+
 @Injectable()
 export class AccountService {
 
@@ -18,7 +20,7 @@ export class AccountService {
     constructor (
         private dbService: DBService,
     ) {
-        console.log('Account Service constructor');
+        logger.debug('Account Service constructor');
     }
 
     populateAccount (id) {
@@ -28,7 +30,7 @@ export class AccountService {
         let db = this.dbService.loadDB();
 
         db.findOne({_id: id}, (err, data) => {
-            console.log('Account Service, found and populating', data);
+            logger.debug('Account Service, found and populating', data);
             self.accountSource.next(data as Account); 
         });
 
@@ -66,7 +68,7 @@ export class AccountService {
 
         this.dbService.db.update({ _id: id}, { $set: fieldsObject }, {}, (err, numReplaced) => {
 
-            console.log('Account updated!');
+            logger.debug('Account updated!');
 
             self.populateAccount(id);
 

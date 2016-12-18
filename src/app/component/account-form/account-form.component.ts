@@ -7,6 +7,8 @@ import { AccountService } from '../../service/account.service';
 import { Account } from '../../model/account';
 import * as Currency from '../../model/currency';
 
+import logger from '../../logger';
+
 @Component({
     selector: 'account-form-component',
     templateUrl: './account-form.template.html',
@@ -35,13 +37,13 @@ export class AccountFormComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
 
-        console.log('account-form ngOnInit()', this.route);
+        logger.debug('account-form ngOnInit()');
 
         if (this.route.snapshot.params['id?'] != undefined) {
 
             this.accountSubscription = this.accountService.account.subscribe( account => {
                 this.zone.run(() => {
-                    console.log("account-form account next", account);
+                    logger.debug("account-form account next", account);
 
                     this.id = account._id;
                     this.name = account.name;
@@ -66,7 +68,7 @@ export class AccountFormComponent implements OnInit, OnDestroy {
 
         let self = this;
 
-        console.log('account-form: onSubmit()', this.name, this.currency);
+        logger.debug('account-form: onSubmit()', this.name, this.currency);
         if (!this.id) {
 
             // Create new account
@@ -78,7 +80,7 @@ export class AccountFormComponent implements OnInit, OnDestroy {
         } else {
 
             // Edit current account
-            console.log('Editing account on submit', this.id);
+            logger.debug('Editing account on submit', this.id);
             this.accountService.updateAccount(this.id, { name: this.name, currency: this.currency }, (err, numReplaced) => {
                 form.reset();
                 self.router.navigate(['account', this.id]);
