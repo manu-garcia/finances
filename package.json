@@ -4,13 +4,9 @@
   "author": "Manu Garcia",
   "version": "0.0.1",
   "scripts": {
-    "build": "webpack --progress --profile --display-error-details --display-cached",
-    "watch-webpack": "webpack --watch --progress --profile --display-error-details --display-cached",
-    "watch": "webpack-dev-server --progress --colors",
-    "electron": "electron src/app",
-    "pack": "electron-packager src/app finances --overwrite --out=electron-packages",
-    "browse-dev": "chrome http://localhost:8080/webpack-dev-server/src/app",
-    "clean": "rm ./electron-packages/ -rf && rm ./src/app/dist/*"
+    "electron": "electron electron",
+    "pack": "electron-packager electron finances --overwrite --out=electron-packages",
+    "clean": "rm ./electron-packages/ -rf && rm ./electron/dist/*"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",
@@ -26,6 +22,8 @@
     "es6-shim": "^0.35.1",
     "file-loader": "^0.9.0",
     "font-awesome-sass-loader": "^1.0.2",
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
     "json-loader": "^0.5.4",
     "node-sass": "^3.13.0",
     "raw-loader": "^0.5.1",
@@ -36,7 +34,7 @@
     "typescript": "^2.0.10",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-stream": "^3.2.0"
   },
   "dependencies": {
     "@angular/common": "^2.2.1",

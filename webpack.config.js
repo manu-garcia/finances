@@ -8,31 +8,14 @@ module.exports = {
     debug: true,
     target: 'electron-renderer',
 
-    entry: {
-        'vendor.bundle': [
-            'font-awesome-sass-loader!./src/font-awesome-sass.config.js',
-            'rxjs',
-            'reflect-metadata',
-            '@angular/core',
-            '@angular/router',
-            '@angular/http',
-            '@angular/forms',
-            'jquery',
-            'bootstrap-loader'
-        ],
-        'app': './src/app/app'
+    resolve: {
+        extensions: ['', '.ts', '.js', '.json', '.css', '.html']
     },
 
     output: {
-        path: __dirname + '/src/app/dist/',
-        publicPath: 'src/app/dist/',
         filename: '[name].js',
         sourceMapFilename: '[name].js.map',
         chunkFilename: '[id].chunk.js'
-    },
-
-    resolve: {
-        extensions: ['', '.ts', '.js', '.json', '.css', '.html']
     },
 
     module: {
@@ -68,16 +51,4 @@ module.exports = {
             }
         ]
     },
-
-    plugins: [
-        new CommonsChunkPlugin({ name: 'vendor.bundle', filename: 'vendor.bundle.js', minChunks: Infinity,}),
-        new CommonsChunkPlugin({ name: 'common', filename: 'common.js'}),
-        new ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            jquery: 'jquery',
-            "Tether": 'tether',
-            "window.Tether": "tether"
-        })
-    ]
 };
