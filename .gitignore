@@ -1,9 +1,8 @@
 node_modules
 .vscode
 app/npm-debug.log
-build
+electron/dist
 electron-packages
-src/app/dist
 npm-debug.log
 db
 log
