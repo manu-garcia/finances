@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Router, ActivatedRoute, Params, Routes } from '@angular/router';
 
 import { AccountService } from '../../service/account.service';
+import { ElectronService } from '../../service/electron.service';
 
 import { Account } from '../../model/account';
 
@@ -20,6 +21,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     private accountSubscription: any;
 
     constructor (
+        private electron: ElectronService,
         private accountService: AccountService, 
         private route: ActivatedRoute,
         private router: Router,
@@ -58,6 +60,12 @@ export class AccountComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.urlSubscription.unsubscribe();
         this.accountSubscription.unsubscribe();
+    }
+
+    selectFileToUpload() {
+        this.electron.showSpreadsheetOpenDialog( fileNames => {
+            logger.debug('Spreadsheet to import from: ', fileNames);
+        });
     }
 
 }

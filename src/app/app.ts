@@ -11,6 +11,7 @@ import 'font-awesome-sass-loader';
 
 import { AccountService } from './service/account.service';
 import { DBService } from './service/db.service';
+import { ElectronService } from './service/electron.service';
 
 import { AppRoutingModule } from './route/app-routing.module';
 
@@ -35,6 +36,7 @@ import { AccountFormComponent } from './component/account-form/account-form.comp
     providers: [
         DBService,
         AccountService,
+        ElectronService,
     ],
     bootstrap: [AppComponent]
 })
