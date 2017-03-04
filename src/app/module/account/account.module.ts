@@ -7,6 +7,7 @@ import { AccountComponent } from '../../component/account/account.component';
 import { AccountOverviewComponent } from '../../component/account-overview/account-overview.component';
 import { AccountChartsComponent } from '../../component/account-charts/account-charts.component';
 import { AccountTransactionsComponent } from '../../component/account-transactions/account-transactions.component';
+import { AccountImportComponent } from '../../component/account-import/account-import.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { AccountTransactionsComponent } from '../../component/account-transactio
         AccountOverviewComponent,
         AccountChartsComponent,
         AccountTransactionsComponent,
+        AccountImportComponent,
     ]
 })
 export class AccountModule {}

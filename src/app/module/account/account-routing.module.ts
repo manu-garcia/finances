@@ -6,6 +6,7 @@ import { AccountOverviewComponent } from '../../component/account-overview/accou
 import { AccountChartsComponent } from '../../component/account-charts/account-charts.component';
 import { AccountTransactionsComponent } from '../../component/account-transactions/account-transactions.component';
 import { AccountFormComponent } from '../../component/account-form/account-form.component';
+import { AccountImportComponent } from '../../component/account-import/account-import.component';
 
 const routes:Routes = [
     { path: 'account/:id', component: AccountComponent,
@@ -15,6 +16,7 @@ const routes:Routes = [
             { path: 'charts', component: AccountChartsComponent },
             { path: 'transactions', component: AccountTransactionsComponent },
             { path: 'account-form/:id?', component: AccountFormComponent },
+            { path: 'account-import', component: AccountImportComponent },
         ]
     },
 ];

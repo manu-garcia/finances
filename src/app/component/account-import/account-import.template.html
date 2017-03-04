@@ -1,0 +1,21 @@
+Import
+
+<div>
+Step = {{step}}
+    <div *ngIf="step==1">
+        Step 1: Statements imported. Select columns
+    </div>
+
+    <div *ngIf="step==2">
+        Step 2: Assign statement types
+    </div>
+
+    <div *ngIf="step==3">
+        Step 3: Confirmation
+    </div>
+
+    <button *ngIf="step<3" type="button" class="btn btn-default" (click)="onNextStep()">Next</button>
+    <button *ngIf="step==3" type="button" class="btn btn-default" (click)="onConfirmatonStep()">Import and finish</button>
+    <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+
+</div>

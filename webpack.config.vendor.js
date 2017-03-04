@@ -5,6 +5,9 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var webpackConfig = require('./webpack.config.js');
 
 module.exports = Object.assign({}, webpackConfig, { 
+    externals: [
+
+    ],
     entry: {
         'vendor.bundle': [
             'font-awesome-sass-loader!./src/font-awesome-sass.config.js',

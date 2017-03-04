@@ -48,6 +48,11 @@ module.exports = {
             {
                 test: /bootstrap\/dist\/js\/umd\//, 
                 loader: 'imports?jQuery=jquery'
+            },
+            {
+                test: /\.min\.js$/,
+                include: /node_modules/,
+                loader: 'script'
             }
         ]
     },

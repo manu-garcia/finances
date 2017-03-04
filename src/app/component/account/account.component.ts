@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params, Routes } from '@angular/router';
 
 import { AccountService } from '../../service/account.service';
 import { ElectronService } from '../../service/electron.service';
+import { XLSXService } from '../../service/xlsx.service';
 
 import { Account } from '../../model/account';
 
@@ -21,6 +22,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     private accountSubscription: any;
 
     constructor (
+        private xlsx: XLSXService,
         private electron: ElectronService,
         private accountService: AccountService, 
         private route: ActivatedRoute,
@@ -62,9 +64,17 @@ export class AccountComponent implements OnInit, OnDestroy {
         this.accountSubscription.unsubscribe();
     }
 
-    selectFileToUpload() {
+    selectFileToImport() {
+
+        let self = this;
+
         this.electron.showSpreadsheetOpenDialog( fileNames => {
             logger.debug('Spreadsheet to import from: ', fileNames);
+
+            let spreadsheet = this.xlsx.parseXLSX(fileNames[0]);
+
+            self.router.navigate(['account', self.id, 'account-import']);
+
         });
     }
 
