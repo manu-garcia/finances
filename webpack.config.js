@@ -30,8 +30,12 @@ module.exports = {
                 exclude: [ /node_modules/ ]
             },
             {
-                test: /\.(html|css)$/,
+                test: /\.html$/,
                 loader: 'raw-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,

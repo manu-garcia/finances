@@ -18,7 +18,13 @@ module.exports = Object.assign({}, webpackConfig, {
             '@angular/http',
             '@angular/forms',
             'jquery',
-            'bootstrap-loader'
+            'bootstrap-loader',
+            'ag-grid',
+            'ag-grid-angular'
+        ],
+        'vendor.bundle.css': [
+            'ag-grid/dist/styles/ag-grid.css',
+            'ag-grid/dist/styles/theme-fresh.css',
         ],
     },
     plugins: [

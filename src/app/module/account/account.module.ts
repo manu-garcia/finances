@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { AgGridModule } from 'ag-grid-angular/main';
+import 'ag-grid/dist/styles/ag-grid.css';
+import 'ag-grid/dist/styles/theme-fresh.css';
 
 import { AccountRoutingModule } from './account-routing.module';
 
@@ -11,8 +16,10 @@ import { AccountImportComponent } from '../../component/account-import/account-i
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
         AccountRoutingModule,
+        AgGridModule.withComponents([]),
     ],
     declarations: [
         AccountComponent,

@@ -76,4 +76,18 @@ export class AccountService {
         });
     }
 
+    addStatements (id, statements) {
+        let self: any = this;
+
+        return new Promise((resolve, reject) => {
+
+            self.dbService.db.update({ _id: id }, { $push: { statements: statements }}, {}, (err, numUpdated) => {
+                
+                if (err) reject();
+
+                resolve(numUpdated);
+            });    
+        });
+    }
+
 }
